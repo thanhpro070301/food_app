@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../shared/shared.dart';
 
 class StarteedScreen extends StatelessWidget {
@@ -12,7 +11,7 @@ class StarteedScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -27,61 +26,60 @@ class StarteedScreen extends StatelessWidget {
                       AssetsConstants.group3_icon,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Image.asset(AssetsConstants.feo)
                 ],
               ),
             ),
             const SizedBox(height: 10),
-            Spacer(),
+            const Spacer(),
             SizedBox(
-              height: 500,
+              height: 400,
               child: Stack(
                 children: [
                   Positioned(
-                    top: 200,
+                    top: 50,
                     right: 0,
                     child: Image.asset(
                       AssetsConstants.person2_img,
                     ),
                   ),
                   Positioned(
-                    top: 100,
+                    top: 10,
                     left: 0,
                     child: Image.asset(
                       AssetsConstants.person1_img,
                     ),
                   ),
                   Positioned(
-                    bottom: -80,
+                    bottom: -120,
                     left: -50,
                     child: Image.asset(
                       AssetsConstants.rectangle3,
                     ),
                   ),
                   Positioned(
-                    bottom: -70,
-                    right: -220,
+                    bottom: -120,
+                    right: -140,
                     child: Image.asset(
                       AssetsConstants.rectangle5,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 39),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Get starteed",
-                            style: TextStyle(color: Palette.orangeColor),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Palette.whiteColor,
-                              fixedSize: Size(300, 65),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50))),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Palette.whiteColor,
+                            fixedSize: const Size(290, 75),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30))),
+                        child: const Text(
+                          "Get starteed",
+                          style: TextStyle(
+                              color: Palette.orangeColor, fontSize: 23),
                         ),
                       ),
                     ),
