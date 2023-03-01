@@ -1,15 +1,47 @@
-// import 'package:flutter/material.dart';
-// import 'package:twitter_clone/theme/pallete.dart';
+import 'package:flutter/material.dart';
+import 'package:food_app/shared/theme/theme.dart';
 
-// class AppTheme {
-//   static ThemeData theme = ThemeData.dark().copyWith(
-//     scaffoldBackgroundColor: Palette.backgroundColor,
-//     appBarTheme: const AppBarTheme(
-//       backgroundColor: Palette.backgroundColor,
-//       elevation: 0,
-//     ),
-//     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-//       backgroundColor: Palette.blueColor,
-//     ),
-//   );
-// }
+ThemeData theme() {
+  return ThemeData(
+    scaffoldBackgroundColor: Palette.whiteColor,
+    fontFamily: "Avenir",
+    textTheme: textTheme(),
+    primaryColor: Palette.orangeColor,
+  );
+}
+
+TextTheme textTheme() {
+  return const TextTheme(
+    headlineLarge: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: 22,
+    ),
+    headlineMedium: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+    ),
+    headlineSmall: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.normal,
+      fontSize: 15,
+    ),
+    bodyLarge: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.normal,
+      height: 1.75,
+      fontSize: 15,
+    ),
+    bodyMedium: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.normal,
+      fontSize: 12,
+    ),
+    bodySmall: TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.normal,
+      fontSize: 10,
+    ),
+  );
+}
