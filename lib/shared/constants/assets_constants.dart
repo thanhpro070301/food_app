@@ -21,4 +21,5 @@ class AssetsConstants {
   static const String rectangle3 = '$_svgImages/rectangle3.png';
   static const String rectangle4 = '$_svgImages/rectangle4.png';
   static const String rectangle5 = '$_svgImages/rectangle5.png';
+  static const String feo = '$_svgImages/feo.png';
 }

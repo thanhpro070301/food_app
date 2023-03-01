@@ -11,8 +11,8 @@ class StarteedScreen extends StatelessWidget {
       backgroundColor: Palette.backgroundStartColor,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -27,45 +27,68 @@ class StarteedScreen extends StatelessWidget {
                       AssetsConstants.group3_icon,
                     ),
                   ),
-                  const Text(
-                    "Food for Everyone",
-                    style: TextStyle(
-                        fontSize: 70,
-                        fontWeight: FontWeight.w500,
-                        color: Palette.whiteColor),
-                  ),
+                  SizedBox(height: 20),
+                  Image.asset(AssetsConstants.feo)
                 ],
               ),
             ),
             const SizedBox(height: 10),
-            Stack(
-              children: [
-                Positioned(
-                  top: 190,
-                  right: 0,
-                  child: Image.asset(
-                    AssetsConstants.person2_img,
+            Spacer(),
+            SizedBox(
+              height: 500,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 200,
+                    right: 0,
+                    child: Image.asset(
+                      AssetsConstants.person2_img,
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: 100,
-                  left: 0,
-                  child: Image.asset(
-                    AssetsConstants.person1_img,
+                  Positioned(
+                    top: 100,
+                    left: 0,
+                    child: Image.asset(
+                      AssetsConstants.person1_img,
+                    ),
                   ),
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(
-                    top: 300,
+                  Positioned(
+                    bottom: -80,
+                    left: -50,
+                    child: Image.asset(
+                      AssetsConstants.rectangle3,
+                    ),
                   ),
-                  child: Image.asset(
-                    AssetsConstants.rectangle3,
-                    fit: BoxFit.fill, // fit the image to the container
+                  Positioned(
+                    bottom: -70,
+                    right: -220,
+                    child: Image.asset(
+                      AssetsConstants.rectangle5,
+                    ),
                   ),
-                ),
-              ],
-            )
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 39),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Get starteed",
+                            style: TextStyle(color: Palette.orangeColor),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Palette.whiteColor,
+                              fixedSize: Size(300, 65),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50))),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
