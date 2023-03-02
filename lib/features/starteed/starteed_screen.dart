@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/features/auth/login_signup_screen.dart';
 import '../../shared/shared.dart';
+import '../../shared/widget/button_food_app.dart';
 
 class StarteedScreen extends StatelessWidget {
   const StarteedScreen({super.key});
@@ -69,18 +71,13 @@ class StarteedScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Palette.whiteColor,
-                            fixedSize: const Size(290, 75),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30))),
-                        child: const Text(
-                          "Get starteed",
-                          style: TextStyle(
-                              color: Palette.orangeColor, fontSize: 23),
-                        ),
+                      child: ButtonFoodApp(
+                        text: "Get starteed",
+                        color: Palette.whiteColor,
+                        textColor: Palette.backgroundOrange1,
+                        onTap: () {
+                          Navigator.push(context, LoginSignUpScreen.route());
+                        },
                       ),
                     ),
                   ),
