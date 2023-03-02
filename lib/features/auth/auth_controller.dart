@@ -4,10 +4,11 @@ import 'package:food_app/model/user_model.dart';
 import 'package:food_app/repository/user/user_repository.dart';
 import '../../core/until.dart';
 
-final authControllerProvider =
-    StateNotifierProvider<AuthController, bool>((ref) {
-  return AuthController();
-});
+final authControllerProvider = StateNotifierProvider<AuthController, bool>(
+  (ref) {
+    return AuthController();
+  },
+);
 
 class AuthController extends StateNotifier<bool> {
   AuthController() : super(false);

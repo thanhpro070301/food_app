@@ -26,7 +26,12 @@ class UserAPI implements IUserAPI {
       );
       return right(true);
     } catch (e, st) {
-      return left(Failure(message: e.toString(), stackTrace: st));
+      return left(
+        Failure(
+          message: e.toString(),
+          stackTrace: st,
+        ),
+      );
     }
   }
 }

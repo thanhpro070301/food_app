@@ -1,11 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/repository/user/user_service.dart';
 import '../../core/type_defs.dart';
 import '../../model/user_model.dart';
-
-final userRepoProvider = Provider((ref) {
-  return UserRepo();
-});
 
 abstract class IUserRepo {
   void signUp({required UserModel userModel}) {}
