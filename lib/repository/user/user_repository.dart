@@ -1,15 +1,24 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/repository/user/user_service.dart';
-import '../../shared/core/core.dart';
+import '../../exceptions/type_defs.dart';
 import '../../model/model.dart';
+
+final userRepoProvider = Provider(
+  (ref) {
+    final userAPI = ref.watch(userAPIProvider);
+    return UserRepo(userAPI: userAPI);
+  },
+);
 
 abstract class IUserRepo {
   void signUp({required UserModel userModel}) {}
 }
 
 class UserRepo implements IUserRepo {
+  final UserAPI _userAPI;
+  UserRepo({required UserAPI userAPI}) : _userAPI = userAPI;
   @override
   FutureEither<bool> signUp({required UserModel userModel}) {
-    final UserAPI userAPI = UserAPI();
-    return userAPI.signUp(userModel: userModel);
+    return _userAPI.signUp(userModel: userModel);
   }
 }

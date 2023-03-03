@@ -1,15 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/shared/shared.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_app/common_widgets/widget/widget.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../../../constants/theme/pallete.dart';
+
+class SignInScreen extends ConsumerStatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<SignInScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -55,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 40),
             ButtonFoodApp(
-              text: "Sign Up",
+              text: "Login",
               textColor: Palette.whiteColor,
               color: Palette.backgroundOrange1,
               onTap: () {},

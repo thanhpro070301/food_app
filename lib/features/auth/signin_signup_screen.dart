@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/shared/shared.dart';
+import '../../common_widgets/widget/line_tab.dart';
+import '../../constants/assets_constants.dart';
+import '../../constants/theme/pallete.dart';
+import 'signin/signin_screen.dart';
+import 'signup/signup_screen.dart';
 
-import 'login_screen.dart';
-import 'signup_screen.dart';
-
-class LoginSignUpScreen extends StatefulWidget {
-  const LoginSignUpScreen({super.key});
+class SignInSignUpScreen extends StatefulWidget {
+  const SignInSignUpScreen({super.key});
   static route() => MaterialPageRoute(
-        builder: (context) => const LoginSignUpScreen(),
+        builder: (context) => const SignInSignUpScreen(),
       );
   @override
-  State<LoginSignUpScreen> createState() => _LoginSignUpScreenState();
+  State<SignInSignUpScreen> createState() => _LoginSignUpScreenState();
 }
 
-class _LoginSignUpScreenState extends State<LoginSignUpScreen>
+class _LoginSignUpScreenState extends State<SignInSignUpScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   static List<Tab> myTabs = <Tab>[
@@ -45,7 +46,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
         child: Column(
           children: [
             Container(
-              height: height * 0.4,
+              height: height * 0.38,
               decoration: const BoxDecoration(
                 color: Color(0xFFF2F2F2),
                 boxShadow: [
@@ -97,7 +98,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: const [
-                  LoginScreen(),
+                  SignInScreen(),
                   SignupScreen(),
                 ],
               ),
@@ -106,51 +107,5 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
         ),
       ),
     );
-  }
-}
-
-class LineTabIndicator extends Decoration {
-  final double strokeWidth;
-  final double lineHeight;
-  final Color color;
-
-  const LineTabIndicator({
-    required this.strokeWidth,
-    required this.lineHeight,
-    required this.color,
-  });
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    return _LinePainter(
-      strokeWidth: strokeWidth,
-      lineHeight: lineHeight,
-      color: color,
-    );
-  }
-}
-
-class _LinePainter extends BoxPainter {
-  final double strokeWidth;
-  final double lineHeight;
-  final Paint _paint;
-
-  _LinePainter({
-    required this.strokeWidth,
-    required this.lineHeight,
-    required Color color,
-  }) : _paint = Paint()
-          ..color = color
-          ..strokeWidth = strokeWidth
-          ..style = PaintingStyle.stroke;
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-    final left = offset.dx + 40;
-    final top = offset.dy + cfg.size!.height - lineHeight;
-    final right = offset.dx + cfg.size!.width - 40;
-    final bottom = offset.dy + cfg.size!.height;
-    final line = Rect.fromLTRB(left, top, right, bottom);
-    canvas.drawRect(line, _paint);
   }
 }

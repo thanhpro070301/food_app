@@ -1,5 +1,5 @@
 class AssetsConstants {
-  static const String _svgImages = 'lib/assets/images';
+  static const String _svgImages = 'assets/images';
 
   static const String hat_img = '$_svgImages/hat_img.png';
   static const String person1_img = '$_svgImages/person1_img.png';

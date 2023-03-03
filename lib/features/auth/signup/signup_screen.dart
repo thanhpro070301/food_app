@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/shared/common/loading_page.dart';
-import '../.././shared/shared.dart';
-import '../../model/model.dart';
-import 'auth_controller.dart';
-
-final signupScreenProvider = StateProvider(
-  (ref) {},
-);
+import 'package:food_app/common_widgets/loading_page.dart';
+import '../../../common_widgets/widget/auth_field.dart';
+import '../../../common_widgets/widget/button_food_app.dart';
+import '../../../constants/theme/pallete.dart';
+import '../../../exceptions/provider.dart';
+import '../../../model/model.dart';
+import '../auth_controller.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignupScreen extends ConsumerStatefulWidget {
   const SignupScreen({super.key});
@@ -41,10 +41,23 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       password: passwordController.text,
       address: addressController.text,
     );
-    ref.read(authControllerProvider.notifier).signUp(
-          userModel: userModel,
-          context: context,
-        );
+
+    final isEmailValid = ref.read(
+      emailValidationProvider(emailController.text),
+    );
+    if (!isEmailValid) {
+      Fluttertoast.showToast(
+        msg: "Email lỗi con mệ rồi",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+      return;
+    }
+    ref
+        .read(authControllerProvider.notifier)
+        .signUp(userModel: userModel, context: context, ref: ref);
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/shared/theme/theme.dart';
+import 'package:food_app/constants/theme/theme.dart';
 
 ThemeData theme() {
   return ThemeData(
