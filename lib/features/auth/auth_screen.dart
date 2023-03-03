@@ -5,16 +5,16 @@ import '../../constants/theme/pallete.dart';
 import 'signin/signin_screen.dart';
 import 'signup/signup_screen.dart';
 
-class SignInSignUpScreen extends StatefulWidget {
-  const SignInSignUpScreen({super.key});
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
   static route() => MaterialPageRoute(
-        builder: (context) => const SignInSignUpScreen(),
+        builder: (context) => const AuthScreen(),
       );
   @override
-  State<SignInSignUpScreen> createState() => _LoginSignUpScreenState();
+  State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _LoginSignUpScreenState extends State<SignInSignUpScreen>
+class _AuthScreenState extends State<AuthScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   static List<Tab> myTabs = <Tab>[

@@ -14,14 +14,14 @@ class AuthField extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxWidth: 350,
+        maxWidth: 314,
       ),
       child: TextField(
         controller: controller,
-        style: const TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 18),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: const TextStyle(color: Colors.grey, fontSize: 20),
+          labelStyle: const TextStyle(color: Colors.grey, fontSize: 18),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         ),
@@ -50,14 +50,14 @@ class _AuthFieldPassState extends State<AuthFieldPass> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        maxWidth: 350,
+        maxWidth: 314,
       ),
       child: TextField(
         controller: widget.controller,
-        style: const TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 18),
         decoration: InputDecoration(
           labelText: widget.label,
-          labelStyle: const TextStyle(color: Colors.grey, fontSize: 20),
+          labelStyle: const TextStyle(color: Colors.grey, fontSize: 18),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           suffixIcon: GestureDetector(

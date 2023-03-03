@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/features/auth/signin_signup_screen.dart';
+import 'package:go_router/go_router.dart';
 import '../../constants/assets_constants.dart';
 import '../../constants/theme/pallete.dart';
 import '../../common_widgets/widget/button_food_app.dart';
@@ -77,10 +77,7 @@ class StarteedScreen extends StatelessWidget {
                         color: Palette.whiteColor,
                         textColor: Palette.backgroundOrange1,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            SignInSignUpScreen.route(),
-                          );
+                          context.go("/auth");
                         },
                       ),
                     ),
