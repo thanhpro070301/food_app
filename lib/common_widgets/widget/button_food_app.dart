@@ -18,7 +18,7 @@ class ButtonFoodApp extends StatelessWidget {
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
           backgroundColor: color,
-          fixedSize: const Size(290, 75),
+          fixedSize: const Size(314, 70),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
       child: Text(

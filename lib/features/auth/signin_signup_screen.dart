@@ -42,13 +42,14 @@ class _LoginSignUpScreenState extends State<SignInSignUpScreen>
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: const Color(0xFFF2F2F2),
       body: SafeArea(
         child: Column(
           children: [
             Container(
               height: height * 0.38,
               decoration: const BoxDecoration(
-                color: Color(0xFFF2F2F2),
+                color: Palette.whiteColor,
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(255, 192, 192, 192),
