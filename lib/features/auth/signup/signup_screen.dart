@@ -4,21 +4,20 @@ import 'package:food_app/common_widgets/loading_page.dart';
 import '../../../common_widgets/widget/auth_field.dart';
 import '../../../common_widgets/widget/button_food_app.dart';
 import '../../../constants/theme/pallete.dart';
-import '../../../exceptions/provider.dart';
+import '../../../utils/provider.dart';
 import '../../../model/model.dart';
 import '../auth_controller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SignupScreen extends ConsumerStatefulWidget {
-  const SignupScreen({super.key});
+class SignUpScreen extends ConsumerStatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  ConsumerState<SignupScreen> createState() => _SignupScreenState();
+  ConsumerState<SignUpScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends ConsumerState<SignupScreen> {
+class _SignupScreenState extends ConsumerState<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -28,7 +27,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
-    addressController.dispose();
+
     fullnameController.dispose();
     phoneController.dispose();
   }
@@ -39,7 +38,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       email: emailController.text,
       phone: phoneController.text,
       password: passwordController.text,
-      address: addressController.text,
+      address: '',
     );
 
     final isEmailValid = ref.read(
@@ -47,11 +46,12 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     );
     if (!isEmailValid) {
       Fluttertoast.showToast(
-        msg: "Email lỗi con mệ rồi",
+        msg: "Email error!! Please again",
         toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
+        fontSize: 15,
+        gravity: ToastGravity.TOP_RIGHT,
+        backgroundColor: Palette.redColor,
+        textColor: Palette.whiteColor,
       );
       return;
     }
@@ -74,7 +74,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   controller: emailController,
                 ),
                 const SizedBox(height: 10),
-                AuthField(
+                AuthFieldPass(
                   label: "Password",
                   controller: passwordController,
                 ),
@@ -88,11 +88,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   label: "Phone",
                   controller: phoneController,
                 ),
-                AuthField(
-                  label: "Address",
-                  controller: addressController,
-                ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 ButtonFoodApp(
                   text: "Sign Up",
                   textColor: Palette.whiteColor,

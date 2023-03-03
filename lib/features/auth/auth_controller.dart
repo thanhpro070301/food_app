@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_app/common_widgets/widget/toals.dart';
 import 'package:food_app/model/model.dart';
 import 'package:food_app/repository/user/user_repository.dart';
-import '../../utils/snackbar.dart';
 import '../../utils/provider.dart';
+import '../home/home_screen.dart';
 
 final authControllerProvider = StateNotifierProvider<AuthController, bool>(
   (ref) {
@@ -27,14 +28,34 @@ class AuthController extends StateNotifier<bool> {
       state = false;
       return;
     }
-
     state = true;
     final res = await _userRepo.signUp(userModel: userModel);
     state = false;
     res.fold(
-      (l) => showNackBar(context, l.message),
+      (l) => toalsErr(context, l.message),
       (r) {
-        showNackBar(context, 'Account create! Please login.');
+        toalsSuccess(context, 'Account create! Please Sign In.');
+      },
+    );
+  }
+
+  void signIn(
+      {required BuildContext context,
+      required UserModel userModel,
+      required WidgetRef ref}) async {
+    final isEmailValid = ref.read(emailValidationProvider(userModel.email));
+    if (!isEmailValid) {
+      state = false;
+      return;
+    }
+    state = true;
+    final res = await _userRepo.signIn(userModel: userModel);
+    state = false;
+    res.fold(
+      (l) => toalsErr(context, l.message),
+      (r) {
+        Navigator.push(context, HomeScreen.route());
+        toalsSuccess(context, 'Sign In Success');
       },
     );
   }

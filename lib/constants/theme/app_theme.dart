@@ -36,12 +36,12 @@ TextTheme textTheme() {
     bodyMedium: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.normal,
-      fontSize: 12,
+      fontSize: 15,
     ),
     bodySmall: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.normal,
-      fontSize: 10,
+      fontSize: 15,
     ),
   );
 }

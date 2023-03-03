@@ -19,10 +19,10 @@ class _LoginSignUpScreenState extends State<SignInSignUpScreen>
   late TabController _tabController;
   static List<Tab> myTabs = <Tab>[
     const Tab(
-      text: "Login",
+      text: "Sign In",
     ),
     const Tab(
-      text: 'Sign-up',
+      text: 'Sign Up',
     ),
   ];
 
@@ -73,10 +73,11 @@ class _LoginSignUpScreenState extends State<SignInSignUpScreen>
                     height: 150,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(
-                            AssetsConstants.hat_img,
-                          ),
-                          fit: BoxFit.cover),
+                        image: AssetImage(
+                          AssetsConstants.hat_img,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   TabBar(
@@ -88,7 +89,9 @@ class _LoginSignUpScreenState extends State<SignInSignUpScreen>
                     labelColor: Colors.black,
                     unselectedLabelColor: const Color(0xffA8A8A8),
                     controller: _tabController,
-                    labelStyle: const TextStyle(fontSize: 20),
+                    labelStyle: const TextStyle(
+                      fontSize: 20,
+                    ),
                     tabs: myTabs.map((e) => e).toList(),
                   ),
                 ],
@@ -99,7 +102,7 @@ class _LoginSignUpScreenState extends State<SignInSignUpScreen>
                 controller: _tabController,
                 children: const [
                   SignInScreen(),
-                  SignupScreen(),
+                  SignUpScreen(),
                 ],
               ),
             )

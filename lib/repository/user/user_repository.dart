@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/repository/user/user_service.dart';
-import '../../exceptions/type_defs.dart';
+import '../../utils/type_defs.dart';
 import '../../model/model.dart';
 
 final userRepoProvider = Provider(
@@ -12,6 +12,7 @@ final userRepoProvider = Provider(
 
 abstract class IUserRepo {
   void signUp({required UserModel userModel}) {}
+  void signIn({required UserModel userModel}) {}
 }
 
 class UserRepo implements IUserRepo {
@@ -20,5 +21,10 @@ class UserRepo implements IUserRepo {
   @override
   FutureEither<bool> signUp({required UserModel userModel}) {
     return _userAPI.signUp(userModel: userModel);
+  }
+
+  @override
+  FutureEither<bool> signIn({required UserModel userModel}) {
+    return _userAPI.signIn(userModel: userModel);
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/model/model.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../exceptions/failure.dart';
-import '../../exceptions/provider.dart';
-import '../../exceptions/type_defs.dart';
+import '../../utils/provider.dart';
+import '../../utils/type_defs.dart';
 
 final userAPIProvider = Provider((ref) {
   final dio = ref.watch(dioProvider);
@@ -13,6 +13,7 @@ final userAPIProvider = Provider((ref) {
 
 abstract class IUserAPI {
   FutureEither<bool> signUp({required UserModel userModel});
+  FutureEither<bool> signIn({required UserModel userModel});
 }
 
 class UserAPI implements IUserAPI {
@@ -28,7 +29,27 @@ class UserAPI implements IUserAPI {
           'email': userModel.email,
           'phone': userModel.phone,
           'password': userModel.password,
-          'address': userModel.address,
+        },
+      );
+      return right(true);
+    } catch (e, st) {
+      return left(
+        Failure(
+          message: e.toString(),
+          stackTrace: st,
+        ),
+      );
+    }
+  }
+
+  @override
+  FutureEither<bool> signIn({required UserModel userModel}) async {
+    try {
+      await _dio.post(
+        '/sign-in',
+        data: {
+          'email': userModel.email,
+          'password': userModel.password,
         },
       );
       return right(true);
