@@ -5,6 +5,7 @@ class FoodClient {
   factory FoodClient() {
     return _instance;
   }
+
   FoodClient._internal();
 
   var dio = Dio();
@@ -16,13 +17,19 @@ class FoodClient {
       receiveTimeout: const Duration(seconds: 3),
     );
     dio = Dio(options);
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      return handler.next(options);
-    }, onResponse: (response, handler) {
-      return handler.next(response);
-    }, onError: (DioError e, handler) {
-      return handler.next(e);
-    }));
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          return handler.next(response);
+        },
+        onError: (DioError e, handler) {
+          return handler.next(e);
+        },
+      ),
+    );
   }
 
   Dio dioInstance() {

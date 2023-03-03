@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/exceptions/until.dart';
+import 'package:food_app/utils/core.dart';
 import '../network/network.dart';
 
 final dioProvider = Provider(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/model/model.dart';
 import 'package:food_app/repository/user/user_repository.dart';
-import '../../exceptions/provider.dart';
-import '../../exceptions/until.dart';
+import '../../utils/snackbar.dart';
+import '../../utils/provider.dart';
 
 final authControllerProvider = StateNotifierProvider<AuthController, bool>(
   (ref) {
