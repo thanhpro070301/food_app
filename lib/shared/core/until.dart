@@ -9,8 +9,14 @@ void showNackBar(BuildContext context, String content) {
 }
 
 String getNameFromEmail(String email) {
-  //thanh0703@gmail.com
-  //List [thanh0703, @gmail.com]
-  //phan tu thu //0         //1
   return email.split('@')[0];
+}
+
+bool isValidEmail(String email) {
+  final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  return emailRegExp.hasMatch(email);
+}
+
+bool isValidPassword(String password) {
+  return password.length >= 8;
 }

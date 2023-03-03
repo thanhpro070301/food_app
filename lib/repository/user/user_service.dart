@@ -1,27 +1,28 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:dio/dio.dart';
-import 'package:food_app/core/failure.dart';
-import 'package:food_app/model/user_model.dart';
+import 'package:food_app/shared/core/core.dart';
+import 'package:food_app/model/model.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../core/type_defs.dart';
+import '.././../network/network.dart';
 
 abstract class IUserAPI {
-  FutureEither<bool> signUp(UserModel user);
+  FutureEither<bool> signUp({required UserModel userModel});
 }
 
 class UserAPI implements IUserAPI {
-  final Dio dio = Dio();
+  Dio dio = FoodClient().dioInstance();
+
   @override
-  FutureEither<bool> signUp(UserModel user) async {
+  FutureEither<bool> signUp({required UserModel userModel}) async {
     try {
       await dio.post(
-        'https://food-api.huytx.com/api/v1/user/sign-up',
+        '/user/sign-up',
         data: {
-          'fullName': user.fullName,
-          'email': user.email,
-          'phone': user.phone,
-          'password': user.password,
-          'address': user.address,
+          'fullName': userModel.fullName,
+          'email': userModel.email,
+          'phone': userModel.phone,
+          'password': userModel.password,
+          'address': userModel.address,
         },
       );
       return right(true);

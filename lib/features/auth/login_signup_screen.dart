@@ -39,7 +39,6 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
@@ -48,10 +47,21 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
             Container(
               height: height * 0.4,
               decoration: const BoxDecoration(
-                color: Palette.whiteColor,
+                color: Color(0xFFF2F2F2),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 192, 192, 192),
+                    blurRadius: 30.0,
+                    spreadRadius: 10.0,
+                    offset: Offset(
+                      5.0,
+                      5.0,
+                    ),
+                  ),
+                ],
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(45),
+                  bottomRight: Radius.circular(45),
                 ),
               ),
               child: Column(
@@ -84,11 +94,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
               ),
             ),
             Expanded(
-              child: Container(
-                color: const Color(0xFFF2F2F2),
-                child: TabBarView(
-                    controller: _tabController,
-                    children: const [LoginScreen(), SignupScreen()]),
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  LoginScreen(),
+                  SignupScreen(),
+                ],
               ),
             )
           ],
@@ -135,9 +146,9 @@ class _LinePainter extends BoxPainter {
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-    final left = offset.dx + 20;
+    final left = offset.dx + 40;
     final top = offset.dy + cfg.size!.height - lineHeight;
-    final right = offset.dx + cfg.size!.width - 20;
+    final right = offset.dx + cfg.size!.width - 40;
     final bottom = offset.dy + cfg.size!.height;
     final line = Rect.fromLTRB(left, top, right, bottom);
     canvas.drawRect(line, _paint);

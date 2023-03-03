@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/common/loading_page.dart';
+import 'package:food_app/shared/common/loading_page.dart';
 import '../.././shared/shared.dart';
-import '../../model/user_model.dart';
+import '../../model/model.dart';
 import 'auth_controller.dart';
+
+final signupScreenProvider = StateProvider(
+  (ref) {},
+);
 
 class SignupScreen extends ConsumerStatefulWidget {
   const SignupScreen({super.key});
@@ -53,29 +57,29 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
               children: [
                 const SizedBox(height: 20),
                 AuthField(
-                  hintText: "Email address",
+                  label: "Email",
                   controller: emailController,
                 ),
                 const SizedBox(height: 10),
                 AuthField(
-                  hintText: "Password",
+                  label: "Password",
                   controller: passwordController,
                 ),
                 const SizedBox(height: 10),
                 AuthField(
-                  hintText: "Full name",
+                  label: "Full name",
                   controller: fullnameController,
                 ),
                 const SizedBox(height: 20),
                 AuthField(
-                  hintText: "Phone",
+                  label: "Phone",
                   controller: phoneController,
                 ),
                 AuthField(
-                  hintText: "Address",
+                  label: "Address",
                   controller: addressController,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 40),
                 ButtonFoodApp(
                   text: "Sign Up",
                   textColor: Palette.whiteColor,
