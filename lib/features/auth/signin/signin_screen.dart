@@ -6,7 +6,6 @@ import '../../../common_widgets/common.dart';
 import '../../../constants/theme/theme.dart';
 import '../../../model/model.dart';
 import '../../../provider/provider.dart';
-import '../auth_controller.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});

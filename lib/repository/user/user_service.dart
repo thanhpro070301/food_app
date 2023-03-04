@@ -1,16 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/model/model.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../exceptions/failure.dart';
-import '../../provider/provider.dart';
 import '../../utils/type_defs.dart';
 import 'dart:developer' as devtools show log;
-
-final userAPIProvider = Provider((ref) {
-  final dio = ref.watch(dioProvider);
-  return UserAPI(dio: dio);
-});
 
 abstract class IUserAPI {
   FutureEither<bool> signUp({required UserModel userModel});

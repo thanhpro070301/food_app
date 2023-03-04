@@ -6,13 +6,6 @@ import 'package:food_app/repository/user/user_repository.dart';
 import 'package:go_router/go_router.dart';
 import '../../provider/provider.dart';
 
-final authControllerProvider = StateNotifierProvider<AuthController, bool>(
-  (ref) {
-    final userRepo = ref.watch(userRepoProvider);
-    return AuthController(userRepo: userRepo);
-  },
-);
-
 class AuthController extends StateNotifier<bool> {
   final UserRepo _userRepo;
   AuthController({required UserRepo userRepo})
@@ -23,11 +16,6 @@ class AuthController extends StateNotifier<bool> {
       {required BuildContext context,
       required UserModel userModel,
       required WidgetRef ref}) async {
-    final isEmailValid = ref.read(emailValidationProvider(userModel.email));
-    if (!isEmailValid) {
-      state = false;
-      return;
-    }
     state = true;
     final res = await _userRepo.signUp(userModel: userModel);
     state = false;

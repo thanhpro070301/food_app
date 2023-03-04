@@ -27,7 +27,7 @@ class ScaffoldWithBottomNavBar extends StatefulWidget {
 class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
   int _locationToTabIndex(String location) {
     final index = widget.tabs.indexWhere(
-      (t) => location.startsWith("/auth/${t.initialLocation}"),
+      (tab) => location.startsWith("/auth/${tab.initialLocation}"),
     );
     return index < 0 ? 0 : index;
   }
