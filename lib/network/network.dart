@@ -12,7 +12,7 @@ class FoodClient {
 
   void init() {
     var options = BaseOptions(
-      baseUrl: 'https://food-api.huytx.com/api/v1/user',
+      baseUrl: 'https://food-api.huytx.com/api/v1',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3),
     );

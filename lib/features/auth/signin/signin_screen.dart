@@ -7,7 +7,7 @@ import 'package:food_app/common_widgets/widget/widget.dart';
 import '../../../common_widgets/loading_page.dart';
 import '../../../constants/theme/pallete.dart';
 import '../../../model/user_model/user_model.dart';
-import '../../../utils/provider.dart';
+import '../../../provider/provider.dart';
 import '../auth_controller.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
@@ -36,7 +36,6 @@ class _LoginScreenState extends ConsumerState<SignInScreen> {
       password: passwordController.text,
       address: '',
     );
-
     final isEmailValid = ref.read(
       emailValidationProvider(emailController.text),
     );

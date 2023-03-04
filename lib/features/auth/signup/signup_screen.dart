@@ -4,7 +4,7 @@ import 'package:food_app/common_widgets/loading_page.dart';
 import '../../../common_widgets/widget/auth_field.dart';
 import '../../../common_widgets/widget/button_food_app.dart';
 import '../../../constants/theme/pallete.dart';
-import '../../../utils/provider.dart';
+import '../../../provider/provider.dart';
 import '../../../model/model.dart';
 import '../auth_controller.dart';
 import 'package:fluttertoast/fluttertoast.dart';

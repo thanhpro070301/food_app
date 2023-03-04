@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/routes/provider_route.dart';
-
 import 'network/network.dart';
 
 void main() {
@@ -20,7 +19,6 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final goRouter = ref.watch(goRouterProvider);
     return MaterialApp.router(
-      title: "dfsbfsbf",
       routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
     );

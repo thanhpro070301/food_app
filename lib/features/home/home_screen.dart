@@ -4,9 +4,6 @@ import '../../constants/theme/pallete.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-  static route() => MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
-      );
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
