@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../constants/theme/pallete.dart';
+import '../../constants/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

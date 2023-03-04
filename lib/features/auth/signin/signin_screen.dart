@@ -2,11 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:food_app/common_widgets/widget/widget.dart';
-
-import '../../../common_widgets/loading_page.dart';
-import '../../../constants/theme/pallete.dart';
-import '../../../model/user_model/user_model.dart';
+import '../../../common_widgets/common.dart';
+import '../../../constants/theme/theme.dart';
+import '../../../model/model.dart';
 import '../../../provider/provider.dart';
 import '../auth_controller.dart';
 

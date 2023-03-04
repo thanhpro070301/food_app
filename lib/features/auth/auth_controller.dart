@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/common_widgets/widget/toals.dart';
+import 'package:food_app/common_widgets/common.dart';
 import 'package:food_app/model/model.dart';
 import 'package:food_app/repository/user/user_repository.dart';
 import 'package:go_router/go_router.dart';

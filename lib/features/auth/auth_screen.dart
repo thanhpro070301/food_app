@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common_widgets/widget/line_tab.dart';
-import '../../constants/assets_constants.dart';
-import '../../constants/theme/pallete.dart';
+import '../../constants/constants.dart';
 import 'signin/signin_screen.dart';
 import 'signup/signup_screen.dart';
 

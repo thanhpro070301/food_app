@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../constants/assets_constants.dart';
-import '../../constants/theme/pallete.dart';
-import '../../common_widgets/widget/button_food_app.dart';
+import '../../constants/constants.dart';
+import '../../common_widgets/common.dart';
 
 class StarteedScreen extends StatelessWidget {
   const StarteedScreen({super.key});
@@ -30,7 +29,7 @@ class StarteedScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Image.asset(AssetsConstants.feo)
+                  Image.asset(AssetsConstants.feo),
                 ],
               ),
             ),

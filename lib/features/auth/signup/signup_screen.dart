@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/common_widgets/loading_page.dart';
-import '../../../common_widgets/widget/auth_field.dart';
-import '../../../common_widgets/widget/button_food_app.dart';
-import '../../../constants/theme/pallete.dart';
+import '../../../common_widgets/common.dart';
+import '../../../constants/theme/theme.dart';
 import '../../../provider/provider.dart';
 import '../../../model/model.dart';
 import '../auth_controller.dart';
@@ -68,12 +66,16 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
         : SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 AuthField(
                   label: "Email",
                   controller: emailController,
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(
+                  height: 10,
+                ),
                 AuthFieldPass(
                   label: "Password",
                   controller: passwordController,
@@ -83,19 +85,25 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
                   label: "Full name",
                   controller: fullnameController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 AuthField(
                   label: "Phone",
                   controller: phoneController,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 ButtonFoodApp(
                   text: "Sign Up",
                   textColor: Palette.whiteColor,
                   color: Palette.backgroundOrange1,
                   onTap: onSignUp,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           );
