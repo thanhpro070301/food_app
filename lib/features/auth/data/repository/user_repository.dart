@@ -1,4 +1,4 @@
-import 'package:food_app/features/auth/data/api/user_service.dart';
+import 'package:food_app/features/auth/data/repository/api/user_service.dart';
 import 'package:food_app/features/auth/data/model/user_model.dart';
 import '../../../../core/process/type_defs.dart';
 

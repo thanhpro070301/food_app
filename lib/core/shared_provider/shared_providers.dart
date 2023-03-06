@@ -1,15 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../network/dio_client.dart';
-import '../shared_preferences/helper.dart';
-import '../shared_preferences/preferences.dart';
-
-final dioInstanceProvider = Provider<Dio>((ref) {
-  return Dio();
-});
+import '../../features/auth/data/repository/shared_preferences/helper.dart';
+import '../../features/auth/data/repository/shared_preferences/preferences.dart';
 
 final dioClientProvider = Provider<DioClient>((ref) {
-  final dio = ref.watch(dioInstanceProvider);
+  final Dio dio = Dio();
   return DioClient(dio: dio);
 });
 

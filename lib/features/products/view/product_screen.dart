@@ -22,10 +22,13 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
   TabController? _tabController;
 
   @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(vsync: this, length: 3);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("888888****************************8888888888888888");
+    print(ref.read(categoryControllerProvider).length);
+     print("888888****************************8888888888888888");
+    _tabController ??= TabController(
+        vsync: this, length: ref.read(categoryControllerProvider).length);
   }
 
   @override

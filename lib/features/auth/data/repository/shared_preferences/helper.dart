@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:food_app/core/shared_preferences/preferences.dart';
+import 'package:food_app/features/auth/data/repository/shared_preferences/preferences.dart';
 
 class SharedPreferenceHelper {
   final Preference _sharedPreference;

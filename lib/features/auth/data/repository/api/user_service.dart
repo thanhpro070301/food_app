@@ -1,16 +1,20 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/exceptions/failure.dart';
-import '../../../../core/network/constant/endpoints.dart';
-import '../../../../core/network/dio_client.dart';
-import '../../../../core/process/type_defs.dart';
+import '../../../../../core/exceptions/failure.dart';
+import '../../../../../core/network/constant/endpoints.dart';
+import '../../../../../core/network/dio_client.dart';
+import '../../../../../core/process/type_defs.dart';
 import 'dart:developer' as devtools show log;
 
-import '../model/user_model.dart';
+import '../../model/user_model.dart';
 
 abstract class IUserAPI {
   FutureEither<bool> signUp({required UserModel userModel});
   FutureEither<bool> signIn({required UserModel userModel});
 }
+
+
 
 class UserAPI implements IUserAPI {
   final DioClient _dioClient;

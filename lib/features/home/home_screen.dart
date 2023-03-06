@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../products/provider/category_provider.dart';
 import '../products/provider/food_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -15,7 +14,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final data = ref.watch(foodControllerProvider);
     final isLoading = ref.watch(isLoadingFoodProvider);
-    print(isLoading);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),

@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/core/process/core.dart';
 import '../../../core/shared_provider/shared_providers.dart';
 import '../data/repository/user_repository.dart';
-import '../data/api/user_service.dart';
+import '../data/repository/api/user_service.dart';
 import '../controller/auth_controller.dart';
 
 final userAPIProvider = Provider<UserAPI>((ref) {
