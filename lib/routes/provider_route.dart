@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/features/auth/auth_screen.dart';
+import 'package:food_app/features/auth/view/auth_screen.dart';
 import 'package:food_app/features/starteed/starteed_screen.dart';
 import 'package:go_router/go_router.dart';
-import '../common_widgets/common.dart';
+import '../common/common.dart';
 import '../features/home/home_screen.dart';
-import '../features/product/product_screen.dart';
+import '../features/products/view/product_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();

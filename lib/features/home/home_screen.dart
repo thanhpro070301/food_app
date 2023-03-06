@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../products/provider/category_provider.dart';
+import '../products/provider/food_provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          "W E L C O M E",
-          style: TextStyle(color: Palette.backgroundOrange1, fontSize: 25),
-        ),
+    final data = ref.watch(foodControllerProvider);
+    final isLoading = ref.watch(isLoadingCategoryProvider);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Products'),
       ),
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(data[index].cateName),
+                  subtitle: Text(data[index].foodName.toString()),
+                );
+              },
+            ),
     );
   }
 }
