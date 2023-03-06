@@ -14,7 +14,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final data = ref.watch(foodControllerProvider);
-    final isLoading = ref.watch(isLoadingCategoryProvider);
+    final isLoading = ref.watch(isLoadingFoodProvider);
+    print(isLoading);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),

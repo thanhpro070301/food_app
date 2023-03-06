@@ -11,8 +11,8 @@ class CategoryNotifier extends StateNotifier<List<CateModel>> {
     fetchCategory(ref: _ref);
   }
 
-  void fetchCategory({required Ref ref}) {
-    ref.read(categoryRepositoryProvider).fetchCategory().then(
+  void fetchCategory({required Ref ref}) async {
+    await ref.watch(categoryRepositoryProvider).fetchCategory().then(
       (res) {
         res.fold(
           (failure) {
@@ -20,9 +20,9 @@ class CategoryNotifier extends StateNotifier<List<CateModel>> {
           },
           (categories) {
             state = categories;
+            ref.watch(isLoadingCategoryProvider.notifier).state = false;
           },
         );
-        ref.read(isLoadingCategoryProvider.notifier).state = false;
       },
     );
   }

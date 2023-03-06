@@ -10,9 +10,9 @@ class FoodNotifier extends StateNotifier<List<FoodModel>> {
         super([]) {
     fetchFood(ref: _ref);
   }
-
   void fetchFood({required Ref ref}) {
-    ref.read(foodRepositoryProvider).fetchFood().then(
+    ref.watch(isLoadingFoodProvider.notifier).state = true;
+    ref.watch(foodRepositoryProvider).fetchFood().then(
       (res) {
         res.fold(
           (failure) {
@@ -22,7 +22,7 @@ class FoodNotifier extends StateNotifier<List<FoodModel>> {
             state = categories;
           },
         );
-        ref.read(isLoadingFoodProvider.notifier).state = false;
+        ref.watch(isLoadingFoodProvider.notifier).state = false;
       },
     );
   }

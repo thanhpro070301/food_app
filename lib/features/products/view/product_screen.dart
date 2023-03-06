@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../common/widget/card_product.dart';
 import '../../../common/widget/line_tab.dart';
+import '../../../common/widget/search_field.dart';
 import '../../../common/widget/text_style.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/theme_constants/pallete.dart';
-import '../data/model/cate_model/cate_model.dart';
 import '../provider/category_provider.dart';
 import '../provider/food_provider.dart';
 
@@ -20,8 +20,12 @@ class ProductScreen extends ConsumerStatefulWidget {
 class _ProductScreenState extends ConsumerState<ProductScreen>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
-  void initializeTabController(List<CateModel> categories) {
-    _tabController = TabController(vsync: this, length: categories.length);
+
+  @override
+  void initState() {
+    super.initState();
+
+    _tabController = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -30,12 +34,9 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
     final List<Tab> myTabs = categoriesProvider
         .map((category) => Tab(text: category.cateName))
         .toList();
-    if (_tabController == null) {
-      initializeTabController(categoriesProvider);
-    }
     final foodProvider = ref.watch(foodControllerProvider);
     return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F2),
+      backgroundColor: const Color(0xFFEDEDED),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -72,24 +73,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
                   constraints: BoxConstraints(
                     maxWidth: 314.w,
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30.h),
-                        ),
-                        borderSide: const BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.h),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      border: InputBorder.none,
-                      hintText: "Search...",
-                      prefixIcon: const Icon(Icons.search),
-                    ),
-                  ),
+                  child: const SearchField(),
                 ),
               ),
               SizedBox(
