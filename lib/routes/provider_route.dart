@@ -5,7 +5,7 @@ import 'package:food_app/features/starteed/starteed_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../common/common.dart';
 import '../features/home/home_screen.dart';
-import '../features/products/view/product_screen.dart';
+import '../features/products/view/test.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -53,7 +53,7 @@ final goRouterProvider = Provider<GoRouter>(
                       path: 'product',
                       pageBuilder: (context, state) => NoTransitionPage(
                         key: state.pageKey,
-                        child: const ProductScreen(),
+                        child: const TestScreen(),
                       ),
                     ),
                   ],

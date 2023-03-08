@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:food_app/core/process/type_defs.dart';
-import 'package:food_app/features/products/data/model/food_model/food_model.dart';
+
 import 'package:fpdart/fpdart.dart';
 import '../api/food_api.dart';
+import '../model/food_model/food_model.dart';
 
 abstract class IFoodRepository {
   void fetchFood() {}

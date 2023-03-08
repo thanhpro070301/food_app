@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Palette {
   static const Color backgroundOrange1 = Color(0xFFFA4A0C);
-  static const Color backgroundStartColor = Color(0xffff4b3a);
+  static const Color backgroundStartColor = Color.fromRGBO(255, 75, 58, 1);
+  static const Color backgroundStartColor2 = Color(0xFFEDEDED);
   static const Color greenColor = Colors.lightGreen;
   static const Color backgroundColor = Colors.black;
   static const Color searchBarColor = Color.fromRGBO(32, 35, 39, 1);

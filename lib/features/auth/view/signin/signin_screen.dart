@@ -29,14 +29,14 @@ class _LoginScreenState extends ConsumerState<SignInScreen> {
 
   void onSignIn() {
     final UserModel userModel = UserModel(
-      email: emailController.text,
+      email: "admin900@gmail.com",
       fullName: '',
       phone: '',
-      password: passwordController.text,
+      password: 'Thanh070301@',
       address: '',
     );
     final isEmailValid = ref.read(
-      emailValidationProvider(emailController.text),
+      emailValidationProvider("admin900@gmail.com"),
     );
     if (!isEmailValid) {
       Fluttertoast.showToast(

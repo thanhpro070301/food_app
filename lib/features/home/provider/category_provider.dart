@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:food_app/features/products/data/api/category_api.dart';
 
 import '../../../core/shared_provider/shared_providers.dart';
 import '../controller/category_controller.dart';
+import '../data/api/category_api.dart';
 import '../data/model/cate_model/cate_model.dart';
 import '../data/repository/category_repo.dart';
 

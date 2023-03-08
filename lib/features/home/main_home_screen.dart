@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../common/widget/card_product.dart';
-import '../../../common/widget/line_tab.dart';
-import '../../../common/widget/search_field.dart';
-import '../../../common/widget/text_style.dart';
-import '../../../core/constants/constants.dart';
-import '../../../core/constants/theme_constants/pallete.dart';
-import '../provider/category_provider.dart';
-import '../provider/food_provider.dart';
+import 'package:food_app/common/common.dart';
+import 'package:food_app/features/home/provider/category_provider.dart';
+import 'package:food_app/features/home/provider/food_provider.dart';
+import '../../common/widget/search_field.dart';
+import '../../common/widget/text_style.dart';
+import '../../core/constants/constants.dart';
+import '../../core/constants/theme_constants/pallete.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
-  const ProductScreen({super.key});
+  final VoidCallback onTap;
+  final IconData icon;
+  const ProductScreen({
+    super.key,
+    required this.onTap,
+    required this.icon,
+  });
 
   @override
   ConsumerState<ProductScreen> createState() => _ProductScreenState();
@@ -20,23 +25,39 @@ class ProductScreen extends ConsumerStatefulWidget {
 class _ProductScreenState extends ConsumerState<ProductScreen>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
-
+  List<Tab> myTabs = [];
+  @override
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    print("888888****************************8888888888888888");
-    print(ref.read(categoryControllerProvider).length);
-     print("888888****************************8888888888888888");
-    _tabController ??= TabController(
-        vsync: this, length: ref.read(categoryControllerProvider).length);
+    final categoriesProvider = ref.watch(categoryControllerProvider);
+    if (categoriesProvider.isNotEmpty) {
+      myTabs = categoriesProvider
+          .map((category) => Tab(text: category.cateName))
+          .toList();
+      _tabController = TabController(vsync: this, length: myTabs.length);
+    }
+  }
+
+  @override
+  void dispose() {
+    _tabController?.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final categoriesProvider = ref.watch(categoryControllerProvider);
-    final List<Tab> myTabs = categoriesProvider
-        .map((category) => Tab(text: category.cateName))
-        .toList();
+    if (categoriesProvider.isEmpty) {
+      return const Loader();
+    }
+    if (_tabController == null) {
+      myTabs = categoriesProvider
+          .map((category) => Tab(text: category.cateName))
+          .toList();
+      _tabController = TabController(vsync: this, length: myTabs.length);
+    }
+
     final foodProvider = ref.watch(foodControllerProvider);
     return Scaffold(
       backgroundColor: const Color(0xFFEDEDED),
@@ -55,8 +76,18 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(AssetsConstants.vector),
-                    Image.asset(AssetsConstants.shoping_cart),
+                    InkWell(
+                      onTap: widget.onTap,
+                      child: Icon(
+                        widget.icon,
+                        size: 30.h,
+                      ),
+                    ),
+                    Image.asset(
+                      AssetsConstants.shoping_cart,
+                      width: 40,
+                      height: 40,
+                    ),
                   ],
                 ),
               ),
@@ -108,24 +139,26 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
                 height: 321.h,
                 child: TabBarView(
                   controller: _tabController,
-                  children: categoriesProvider.map((category) {
-                    final foodInCategory = foodProvider
-                        .where((food) => food.cateId == category.cateId)
-                        .toList();
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: foodInCategory.length,
-                      itemBuilder: (context, index) {
-                        return CardProduct(
-                          categoryName: foodInCategory[index].foodName,
-                          image: foodInCategory[index].images.isNotEmpty
-                              ? foodInCategory[index].images[0].imageUrl
-                              : '',
-                          price: foodInCategory[index].price.toString(),
-                        );
-                      },
-                    );
-                  }).toList(),
+                  children: categoriesProvider.map(
+                    (category) {
+                      final foodInCategory = foodProvider
+                          .where((food) => food.cateId == category.cateId)
+                          .toList();
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: foodInCategory.length,
+                        itemBuilder: (context, index) {
+                          return CardProduct(
+                            categoryName: foodInCategory[index].foodName,
+                            image: foodInCategory[index].images.isNotEmpty
+                                ? foodInCategory[index].images[0].imageUrl
+                                : '',
+                            price: foodInCategory[index].price.toString(),
+                          );
+                        },
+                      );
+                    },
+                  ).toList(),
                 ),
               ),
             ],
