@@ -6,10 +6,12 @@ import 'package:food_app/core/constants/theme_constants/pallete.dart';
 class TextSmallStyle extends StatelessWidget {
   final String text;
   final Color? color;
+  final double? size;
   const TextSmallStyle({
     super.key,
     required this.text,
     this.color = Palette.backgroundOrange1,
+    this.size
   });
 
   @override
@@ -17,7 +19,7 @@ class TextSmallStyle extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: text,
-        style: TextStyle(color: color, fontSize: 16.h),
+        style: TextStyle(color: color, fontSize: 18.h),
         recognizer: TapGestureRecognizer()..onTap = () {},
       ),
     );

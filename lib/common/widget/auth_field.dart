@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthField extends StatelessWidget {
   final TextEditingController controller;
-
+  final TextInputType? keyboardType;
   final String label;
-  const AuthField({
-    Key? key,
-    required this.controller,
-    required this.label,
-  }) : super(key: key);
+
+  const AuthField(
+      {Key? key,
+      required this.controller,
+      required this.label,
+      required this.keyboardType})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class AuthField extends StatelessWidget {
         maxWidth: 314.w,
       ),
       child: TextField(
+        keyboardType: keyboardType,
         controller: controller,
         style: TextStyle(fontSize: 18.h),
         decoration: InputDecoration(

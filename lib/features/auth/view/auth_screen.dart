@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../common/widget/line_tab.dart';
-import '../../../core/constants/constants.dart';
 import '../../../core/constants/theme_constants/theme.dart';
+
+import '../../../gen/assets.gen.dart';
 import 'signin/signin_screen.dart';
 import 'signup/signup_screen.dart';
 
@@ -72,10 +73,10 @@ class _AuthScreenState extends State<AuthScreen>
                   Container(
                     width: 150.w,
                     height: 150.h,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
-                          AssetsConstants.hat_img,
+                          Assets.images.hatImg.path,
                         ),
                         fit: BoxFit.cover,
                       ),

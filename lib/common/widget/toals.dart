@@ -7,7 +7,7 @@ void toalsErr(BuildContext context, String msg) {
   Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_LONG,
-    fontSize: 15.h,
+    fontSize: 19.h,
     gravity: ToastGravity.TOP_RIGHT,
     backgroundColor: Palette.redColor,
     textColor: Palette.whiteColor,
@@ -18,9 +18,9 @@ void toalsSuccess(BuildContext context, String msg) {
   Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_LONG,
-    fontSize: 15.h,
-    gravity: ToastGravity.TOP_RIGHT,
-    backgroundColor: Palette.greenColor,
-    textColor: Palette.whiteColor,
+    fontSize: 19.h,
+    gravity: ToastGravity.TOP,
+    backgroundColor: Colors.lightGreenAccent,
+    textColor: Colors.grey[700],
   );
 }

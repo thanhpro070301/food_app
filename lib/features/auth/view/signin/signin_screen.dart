@@ -65,6 +65,7 @@ class _LoginScreenState extends ConsumerState<SignInScreen> {
               children: [
                 SizedBox(height: 50.h),
                 AuthField(
+                  keyboardType: TextInputType.emailAddress,
                   label: "Email address",
                   controller: emailController,
                 ),

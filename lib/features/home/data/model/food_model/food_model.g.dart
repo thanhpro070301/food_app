@@ -6,6 +6,7 @@ part of 'food_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_FoodModel _$$_FoodModelFromJson(Map<String, dynamic> json) => _$_FoodModel(
       foodId: json['foodId'] as String,
       foodName: json['foodName'] as String,
@@ -18,6 +19,7 @@ _$_FoodModel _$$_FoodModelFromJson(Map<String, dynamic> json) => _$_FoodModel(
       cateName: json['cateName'] as String,
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_FoodModelToJson(_$_FoodModel instance) =>
     <String, dynamic>{
       'foodId': instance.foodId,

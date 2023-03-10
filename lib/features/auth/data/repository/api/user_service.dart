@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import '../../../../../core/exceptions/failure.dart';
 import '../../../../../core/network/constant/endpoints.dart';
@@ -13,8 +11,6 @@ abstract class IUserAPI {
   FutureEither<bool> signUp({required UserModel userModel});
   FutureEither<bool> signIn({required UserModel userModel});
 }
-
-
 
 class UserAPI implements IUserAPI {
   final DioClient _dioClient;

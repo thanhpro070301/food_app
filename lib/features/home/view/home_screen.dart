@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_app/features/home/main_home_screen.dart';
+import 'package:food_app/features/home/view/main_home_screen.dart';
 import 'package:food_app/features/home/provider/category_provider.dart';
-import '../../../common/loading_page.dart';
-import '../../../common/widget/info_card.dart';
-import '../../../core/constants/theme_constants/pallete.dart';
+import '../../../../common/loading_page.dart';
+import '../../../../common/widget/info_card.dart';
+import '../../../../core/constants/theme_constants/pallete.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -80,7 +80,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
       CurvedAnimation(
           parent: _animationController, curve: Curves.fastOutSlowIn),
     );
-    animation2 = Tween<double>(begin: 1.h, end: 0.75.h).animate(
+    animation2 = Tween<double>(begin: 1.h, end: 0.8.h).animate(
       CurvedAnimation(
           parent: _animationController, curve: Curves.fastOutSlowIn),
     );
@@ -121,7 +121,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                   color: Palette.backgroundOrange1,
                   height: size.height,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(height: 30.h),
+                      const InfoCard(
+                        text: "Security",
+                        icon: CupertinoIcons.hurricane,
+                      ),
+                      SizedBox(height: 30.h),
+                      const InfoCard(
+                        text: "Security",
+                        icon: CupertinoIcons.hurricane,
+                      ),
+                      SizedBox(height: 30.h),
+                      const InfoCard(
+                        text: "Security",
+                        icon: CupertinoIcons.hurricane,
+                      ),
+                      SizedBox(height: 30.h),
+                      const InfoCard(
+                        text: "Security",
+                        icon: CupertinoIcons.hurricane,
+                      ),
                       SizedBox(height: 30.h),
                       const InfoCard(
                         text: "Security",

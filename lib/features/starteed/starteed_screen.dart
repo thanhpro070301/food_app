@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/constants/constants.dart';
 import '../../common/common.dart';
 import '../../core/constants/theme_constants/pallete.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../gen/assets.gen.dart';
 
 class StarteedScreen extends StatelessWidget {
   const StarteedScreen({super.key});
@@ -27,11 +27,11 @@ class StarteedScreen extends StatelessWidget {
                     child: Image.asset(
                       width: 45.86.w,
                       height: 49.65.h,
-                      AssetsConstants.group3_icon,
+                      Assets.images.gr3.path,
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  Image.asset(AssetsConstants.feo),
+                  Image.asset(Assets.images.feo.path),
                 ],
               ),
             ),
@@ -45,28 +45,26 @@ class StarteedScreen extends StatelessWidget {
                     top: 50.h,
                     right: 0.h,
                     child: Image.asset(
-                      AssetsConstants.person2_img,
+                      Assets.images.person2Img.path,
                     ),
                   ),
                   Positioned(
                     top: 10.h,
                     left: 0.h,
                     child: Image.asset(
-                      AssetsConstants.person1_img,
+                      Assets.images.person1Img.path,
                     ),
                   ),
                   Positioned(
                     bottom: -120.h,
                     left: -50.h,
-                    child: Image.asset(
-                      AssetsConstants.rectangle3,
-                    ),
+                    child: Image.asset(Assets.images.rectangle3.path),
                   ),
                   Positioned(
                     bottom: -120.h,
                     right: -140.h,
                     child: Image.asset(
-                      AssetsConstants.rectangle5,
+                      Assets.images.rectangle5.path,
                     ),
                   ),
                   Padding(

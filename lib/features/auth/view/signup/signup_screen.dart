@@ -70,6 +70,7 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
                   height: 20.h,
                 ),
                 AuthField(
+                  keyboardType: TextInputType.emailAddress,
                   label: "Email",
                   controller: emailController,
                 ),
@@ -82,6 +83,7 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
                 ),
                 SizedBox(height: 10.h),
                 AuthField(
+                  keyboardType: TextInputType.name,
                   label: "Full name",
                   controller: fullnameController,
                 ),
@@ -89,6 +91,7 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
                   height: 20.h,
                 ),
                 AuthField(
+                  keyboardType: TextInputType.phone,
                   label: "Phone",
                   controller: phoneController,
                 ),

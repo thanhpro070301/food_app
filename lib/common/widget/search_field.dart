@@ -8,22 +8,30 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(30.h),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15.h),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 314.w,
+        ),
+        child: TextField(
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(30.h),
+              ),
+              borderSide: const BorderSide(color: Colors.white),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.h),
+              borderSide: BorderSide(color: Colors.grey.shade400),
+            ),
+            fillColor: Colors.grey.shade200,
+            border: InputBorder.none,
+            hintText: "Search...",
+            prefixIcon: const Icon(Icons.search),
           ),
-          borderSide: const BorderSide(color: Colors.white),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.h),
-          borderSide: BorderSide(color: Colors.grey.shade400),
-        ),
-        fillColor: Colors.grey.shade200,
-        border: InputBorder.none,
-        hintText: "Search...",
-        prefixIcon: const Icon(Icons.search),
       ),
     );
   }

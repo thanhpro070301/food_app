@@ -47,6 +47,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         backgroundColor: const Color(0xFFF2F2F2),
         currentIndex: _currentIndex,
         items: widget.tabs,

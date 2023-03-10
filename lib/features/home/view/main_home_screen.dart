@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_app/common/common.dart';
+import 'package:food_app/features/details/view/details_screen.dart';
 import 'package:food_app/features/home/provider/category_provider.dart';
 import 'package:food_app/features/home/provider/food_provider.dart';
-import '../../common/widget/search_field.dart';
-import '../../common/widget/text_style.dart';
-import '../../core/constants/constants.dart';
-import '../../core/constants/theme_constants/pallete.dart';
+import 'package:food_app/gen/assets.gen.dart';
+import '../../../common/widget/search_field.dart';
+import '../../../common/widget/text_style.dart';
+import '../../../core/constants/theme_constants/pallete.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
   final VoidCallback onTap;
@@ -84,7 +85,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
                       ),
                     ),
                     Image.asset(
-                      AssetsConstants.shoping_cart,
+                      Assets.images.cartIcon.path,
                       width: 40,
                       height: 40,
                     ),
@@ -96,38 +97,16 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: Image.asset(AssetsConstants.delicious),
+                child: Image.asset(Assets.images.delici.path),
               ),
               SizedBox(
                 height: 20.h,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.h),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: 314.w,
-                  ),
-                  child: const SearchField(),
-                ),
-              ),
+              const SearchField(),
               SizedBox(
                 height: 20.h,
               ),
-              TabBar(
-                isScrollable: true,
-                indicator: LineTabIndicator(
-                  color: Palette.backgroundOrange1,
-                  lineHeight: 1.5.h,
-                  strokeWidth: 3.h,
-                ),
-                labelColor: Palette.backgroundOrange1,
-                unselectedLabelColor: const Color(0xffA8A8A8),
-                controller: _tabController,
-                labelStyle: const TextStyle(
-                  fontSize: 20,
-                ),
-                tabs: myTabs.map((e) => e).toList(),
-              ),
+              TabCategory(tabController: _tabController, myTabs: myTabs),
               Padding(
                 padding: EdgeInsets.all(8.h),
                 child: const Align(
@@ -154,6 +133,23 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
                                 ? foodInCategory[index].images[0].imageUrl
                                 : '',
                             price: foodInCategory[index].price.toString(),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailsScreen(
+                                    cateId: foodInCategory[index].cateId,
+                                    cateName: foodInCategory[index].cateName,
+                                    foodID: foodInCategory[index].foodId,
+                                    description:
+                                        foodInCategory[index].description,
+                                    foodName: foodInCategory[index].foodName,
+                                    price: foodInCategory[index].price,
+                                    images: foodInCategory[index].images,
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       );
@@ -165,6 +161,36 @@ class _ProductScreenState extends ConsumerState<ProductScreen>
           ),
         ),
       ),
+    );
+  }
+}
+
+class TabCategory extends StatelessWidget {
+  const TabCategory({
+    super.key,
+    required TabController? tabController,
+    required this.myTabs,
+  }) : _tabController = tabController;
+
+  final TabController? _tabController;
+  final List<Tab> myTabs;
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBar(
+      isScrollable: true,
+      indicator: LineTabIndicator(
+        color: Palette.backgroundOrange1,
+        lineHeight: 1.5.h,
+        strokeWidth: 3.h,
+      ),
+      labelColor: Palette.backgroundOrange1,
+      unselectedLabelColor: const Color(0xffA8A8A8),
+      controller: _tabController,
+      labelStyle: const TextStyle(
+        fontSize: 20,
+      ),
+      tabs: myTabs.map((e) => e).toList(),
     );
   }
 }
