@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../home/data/model/food_model/food_model.dart';
+import '../model/card_model/card_model.dart';
 
 class CartModel extends StateNotifier<List<CartItem>> {
   CartModel() : super([]);
@@ -19,12 +19,7 @@ class CartModel extends StateNotifier<List<CartItem>> {
     }
   }
 
-  void removeCurrentCartItem(CartItem currentItem) {
-    state.remove(currentItem);
-    state = [...state];
-  }
-
-  void removeCartItem(FoodModel food) async {
+  void removeCartItem(FoodModel food) {
     final existingItemIndex =
         state.indexWhere((item) => item.food.foodId == food.foodId);
     if (existingItemIndex != -1) {
@@ -39,18 +34,8 @@ class CartModel extends StateNotifier<List<CartItem>> {
     }
   }
 
-  void removeAll(CartItem item) {
-    state.remove(item);
+  void removeAllCartItem(CartItem currentItem) {
+    state.remove(currentItem);
     state = [...state];
   }
-
-  void clear() {
-    state = [];
-  }
-}
-
-class CartItem {
-  final FoodModel food;
-  int quantity;
-  CartItem({required this.food, this.quantity = 1});
 }

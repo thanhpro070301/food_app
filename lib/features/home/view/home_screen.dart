@@ -118,37 +118,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 width: size.width,
                 left: isSideMenuClose ? -500.h : 0,
                 child: Container(
+                  padding: const EdgeInsets.only(top: 50),
                   color: Palette.backgroundOrange1,
                   height: size.height,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 30.h),
-                      const InfoCard(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      InfoCard(
+                        text: "Profile",
+                        icon: CupertinoIcons.profile_circled,
+                      ),
+                      Dividers(),
+                      InfoCard(
+                        text: "Orders",
+                        icon: CupertinoIcons.ant_fill,
+                      ),
+                      Dividers(),
+                      InfoCard(
+                        text: "Offer and promo",
+                        icon: CupertinoIcons.tag,
+                      ),
+                      Dividers(),
+                      InfoCard(
+                        text: "Privacy policy",
+                        icon: CupertinoIcons.bookmark_fill,
+                      ),
+                      Dividers(),
+                      InfoCard(
                         text: "Security",
                         icon: CupertinoIcons.hurricane,
                       ),
-                      SizedBox(height: 30.h),
-                      const InfoCard(
-                        text: "Security",
-                        icon: CupertinoIcons.hurricane,
-                      ),
-                      SizedBox(height: 30.h),
-                      const InfoCard(
-                        text: "Security",
-                        icon: CupertinoIcons.hurricane,
-                      ),
-                      SizedBox(height: 30.h),
-                      const InfoCard(
-                        text: "Security",
-                        icon: CupertinoIcons.hurricane,
-                      ),
-                      SizedBox(height: 30.h),
-                      const InfoCard(
-                        text: "Security",
-                        icon: CupertinoIcons.hurricane,
-                      ),
-                      SizedBox(height: 30.h),
                     ],
                   ),
                 ),

@@ -17,11 +17,13 @@ class InfoCard extends StatelessWidget {
         backgroundColor: Colors.white24,
         child: Icon(icon, color: Colors.white),
       ),
-      title: Text(text),
+      title: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 20),
+      ),
     );
   }
 }
-
 
 class Dividers extends StatelessWidget {
   const Dividers({
@@ -31,10 +33,10 @@ class Dividers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 30.h, right: 80.h, top: 20),
+      padding: EdgeInsets.only(left: 30.h, right: 175.h, top: 10, bottom: 10),
       child: const Divider(
         color: Colors.white,
-        height: 2,
+        thickness: 2,
       ),
     );
   }

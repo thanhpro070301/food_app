@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:food_app/features/auth/view/auth_screen.dart';
+import 'package:food_app/features/starteed/starteed_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../common/common.dart';
 
@@ -30,7 +31,7 @@ final goRouterProvider = Provider<GoRouter>(
       routes: [
         GoRoute(
           path: "/",
-          builder: (context, state) => const HomeScreen(),
+          builder: (context, state) => const StarteedScreen(),
           routes: [
             GoRoute(
               path: "auth",

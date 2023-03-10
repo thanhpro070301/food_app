@@ -4,9 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:food_app/core/constants/theme_constants/theme.dart';
+import '../../../common/widget/button_food_app.dart';
+import '../../../common/widget/toals.dart';
 import '../../../gen/assets.gen.dart';
 import '../../home/data/model/food_model/food_model.dart';
-import '../controller/controller.dart';
+import '../model/card_model/card_model.dart';
 import '../provider/provider.dart';
 
 class CartScreen extends ConsumerStatefulWidget {
@@ -32,18 +34,19 @@ class CartScreen extends ConsumerStatefulWidget {
 }
 
 class _CartScreenState extends ConsumerState<CartScreen> {
-  void addIntoCard(CartItem item, String foodID) {
+  void addIntoCard(String foodID) {
     ref.read(cartControllerProvider.notifier).addCartItem(
-        FoodModel(
-          cateId: widget.cateId,
-          cateName: widget.cateName,
-          description: widget.description,
-          foodId: widget.foodID,
-          foodName: widget.foodName,
-          images: [],
-          price: widget.price,
-        ),
-        foodID);
+          FoodModel(
+            cateId: widget.cateId,
+            cateName: widget.cateName,
+            description: widget.description,
+            foodId: widget.foodID,
+            foodName: widget.foodName,
+            images: [],
+            price: widget.price,
+          ),
+          foodID,
+        );
   }
 
   void removeCard(CartItem item, int index) {
@@ -89,81 +92,107 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                 ],
               ),
             )
-          : ListView.builder(
-              itemCount: cartItems.length,
-              itemBuilder: (context, index) {
-                final item = cartItems[index];
+          : Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: cartItems.length,
+                    itemBuilder: (context, index) {
+                      final item = cartItems[index];
 
-                return Slidable(
-                  endActionPane:
-                      ActionPane(motion: const StretchMotion(), children: [
-                    SlidableAction(
-                      onPressed: (context) {
-                        ref
-                            .read(cartControllerProvider.notifier)
-                            .removeCurrentCartItem(cartItems[index]);
-                      },
-                      backgroundColor: Palette.backgroundStartColor,
-                      icon: CupertinoIcons.delete,
-                    )
-                  ]),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(45.h),
-                    child: Card(
-                      elevation: 2,
-                      child: ListTile(
-                        contentPadding: EdgeInsets.all(30.h),
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(100.h),
-                          child: SizedBox(
-                            width: 70.h,
-                            height: 200.h,
-                            child: Image.network(
-                              cartItems[index].food.images[0].imageUrl,
-                              fit: BoxFit.cover,
+                      return Slidable(
+                        endActionPane: ActionPane(
+                          motion: const StretchMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {},
+                              backgroundColor:
+                                  const Color.fromARGB(255, 179, 67, 117),
+                              icon: CupertinoIcons.heart_solid,
+                              borderRadius: BorderRadius.circular(20),
+                              label: "Like",
+                            ),
+                            SlidableAction(
+                              onPressed: (context) {
+                                ref
+                                    .read(cartControllerProvider.notifier)
+                                    .removeAllCartItem(cartItems[index]);
+                                toalsErr(context, "Delete food from cart.");
+                              },
+                              backgroundColor: Palette.backgroundStartColor,
+                              icon: CupertinoIcons.delete,
+                              borderRadius: BorderRadius.circular(20),
+                              label: "Delete",
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(45.h),
+                          child: Card(
+                            elevation: 2,
+                            child: ListTile(
+                              contentPadding: EdgeInsets.all(30.h),
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(100.h),
+                                child: SizedBox(
+                                  width: 70.h,
+                                  height: 200.h,
+                                  child: Image.network(
+                                    cartItems[index].food.images[0].imageUrl,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              title: Text(item.food.foodName),
+                              subtitle: Text(item.food.description),
+                              trailing: Container(
+                                width: 110.w,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30.h),
+                                    color: Palette.backgroundOrange1),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () => removeCard(item, index),
+                                    ),
+                                    Text(
+                                      cartItems[index].quantity.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.h),
+                                    ),
+                                    IconButton(
+                                      icon: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () => addIntoCard(
+                                          cartItems[index].food.foodId),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                        title: Text(item.food.foodName),
-                        subtitle: Text(item.food.description),
-                        trailing: Container(
-                          width: 110.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30.h),
-                              color: Palette.backgroundOrange1),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () => removeCard(item, index),
-                              ),
-                              Text(
-                                cartItems[index].quantity.toString(),
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.h),
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () => addIntoCard(
-                                    item, cartItems[index].food.foodId),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+                ButtonFoodApp(
+                  color: Palette.backgroundOrange1,
+                  onTap: () {},
+                  text: "Complete order",
+                  textColor: Colors.white,
+                ),
+              ],
             ),
     );
   }

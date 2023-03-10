@@ -38,15 +38,15 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
   void addIntoCard() {
     ref.read(cartControllerProvider.notifier).addCartItem(
         FoodModel(
-            cateId: widget.cateId,
-            cateName: widget.cateName,
-            description: widget.description,
-            foodId: widget.foodID,
-            foodName: widget.foodName,
-            images: widget.images,
-            price: widget.price),
+          cateId: widget.cateId,
+          cateName: widget.cateName,
+          description: widget.description,
+          foodId: widget.foodID,
+          foodName: widget.foodName,
+          images: widget.images,
+          price: widget.price,
+        ),
         widget.foodID);
-
     toalsSuccess(context, "Added food to cart.");
   }
 
@@ -84,8 +84,8 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
             child: Column(
               children: [
                 Container(
-                  height: 250.h,
-                  width: 250.h,
+                  height: 220.h,
+                  width: 220.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150.h),
                   ),
@@ -97,16 +97,14 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(150.h),
-                          child: Image.network(
-                            widget.images[index].imageUrl,
-                            fit: BoxFit.cover,
-                          ),
+                          child: Image.network(widget.images[index].imageUrl,
+                              fit: BoxFit.cover),
                         ),
                       );
                     },
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
                 SmoothPageIndicator(
                   controller: widget._controllerPageView,
                   count: widget.images.length,
@@ -126,34 +124,43 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
           Text(
             widget.foodName,
             style: const TextStyle(
-                fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 30,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           SizedBox(height: 20.h),
           Center(
-              child:
-                  TextSmallStyle(text: "${widget.price} nghìn ", size: 25.h)),
+            child: TextSmallStyle(
+              text: "${widget.price} nghìn ",
+              size: 25.h,
+            ),
+          ),
           SizedBox(height: 20.h),
           const Text("Delivery info "),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: 25.w,
+              vertical: 15.h,
+            ),
             child: RichText(
               textWidthBasis: TextWidthBasis.parent,
               softWrap: true,
               text: TextSpan(
                 text: "abc",
-                style: TextStyle(color: Colors.pink, fontSize: 16.h),
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: 16.h,
+                ),
               ),
             ),
           ),
           const Spacer(),
           ButtonFoodApp(
             color: Palette.backgroundOrange1,
-            onTap: () => addIntoCard(),
+            onTap: addIntoCard,
             text: "Add to card",
             textColor: Colors.white,
-          ),
-          SizedBox(
-            height: 30.h,
           ),
         ],
       ),

@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
 
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp.router(
-        theme: theme(),
+        theme: theme(context),
         routerConfig: goRouter,
         debugShowCheckedModeBanner: false,
       ),
