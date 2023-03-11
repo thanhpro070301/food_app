@@ -57,42 +57,45 @@ class _LoginScreenState extends ConsumerState<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(authControllerProvider);
-
     return isLoading
         ? const Loader()
-        : SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 50.h),
-                AuthField(
-                  keyboardType: TextInputType.emailAddress,
-                  label: "Email address",
-                  controller: emailController,
+        : _bodySignIn();
+  }
+
+  SingleChildScrollView _bodySignIn() {
+    return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 50.h),
+              AuthField(
+                keyboardType: TextInputType.emailAddress,
+                label: "Email address",
+                controller: emailController,
+              ),
+              SizedBox(height: 30.h),
+              AuthFieldPass(
+                label: "Password",
+                controller: passwordController,
+              ),
+              SizedBox(height: 40.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    TextSmallStyle(text: "Forgot password?"),
+                  ],
                 ),
-                SizedBox(height: 30.h),
-                AuthFieldPass(
-                  label: "Password",
-                  controller: passwordController,
-                ),
-                SizedBox(height: 40.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 35.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      TextSmallStyle(text: "Forgot password?"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 40.h),
-                ButtonFoodApp(
-                  text: "Sign In",
-                  textColor: Palette.whiteColor,
-                  color: Palette.backgroundOrange1,
-                  onTap: onSignIn,
-                ),
-              ],
-            ),
-          );
+              ),
+              SizedBox(height: 40.h),
+              ButtonFoodApp(
+                text: "Sign In",
+                textColor: Palette.whiteColor,
+                color: Palette.backgroundOrange1,
+                onTap: onSignIn,
+              ),
+            ],
+          ),
+        );
   }
 }

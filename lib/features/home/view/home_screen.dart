@@ -70,17 +70,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 320))
+        vsync: this, duration: const Duration(milliseconds: 500))
       ..addListener(
         () {
           setState(() {});
         },
       );
-    animation = Tween<double>(begin: 0.h, end: 1.h).animate(
+    animation = Tween<double>(begin: 0.h, end: 0.9.h).animate(
       CurvedAnimation(
           parent: _animationController, curve: Curves.fastOutSlowIn),
     );
-    animation2 = Tween<double>(begin: 1.h, end: 0.8.h).animate(
+    animation2 = Tween<double>(begin: 0.9.h, end: 0.7.h).animate(
       CurvedAnimation(
           parent: _animationController, curve: Curves.fastOutSlowIn),
     );
@@ -113,12 +113,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 ),
               ),
               AnimatedPositioned(
-                duration: const Duration(milliseconds: 320),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.fastOutSlowIn,
                 width: size.width,
                 left: isSideMenuClose ? -500.h : 0,
                 child: Container(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: EdgeInsets.only(top: 50.h),
                   color: Palette.backgroundOrange1,
                   height: size.height,
                   child: Column(
@@ -160,7 +160,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, 0.001.h)
                         ..rotateY(animation.value -
-                            30.h * animation.value * pi / 280.h),
+                            30.h * animation.value * pi / 300.h),
                       alignment: Alignment.center,
                       child: Transform.translate(
                         offset: Offset(animation.value * 255.h, 0),

@@ -47,70 +47,79 @@ class _AuthScreenState extends State<AuthScreen>
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 250.h,
-              decoration: BoxDecoration(
-                color: Palette.whiteColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(255, 192, 192, 192),
-                    blurRadius: 30.h,
-                    spreadRadius: 10.0,
-                    offset: Offset(
-                      5.h,
-                      5.h,
-                    ),
-                  ),
-                ],
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(45.h),
-                  bottomRight: Radius.circular(45.h),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    width: 150.w,
-                    height: 150.h,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          Assets.images.hatImg.path,
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  TabBar(
-                    indicator: LineTabIndicator(
-                      color: Palette.backgroundOrange1,
-                      lineHeight: 1.5.h,
-                      strokeWidth: 3.h,
-                    ),
-                    labelColor: Palette.backgroundOrange1,
-                    unselectedLabelColor: const Color(0xffA8A8A8),
-                    controller: _tabController,
-                    labelStyle: TextStyle(
-                      fontSize: 20.h,
-                    ),
-                    tabs: myTabs.map((e) => e).toList(),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: const [
-                  SignInScreen(),
-                  SignUpScreen(),
-                ],
-              ),
-            )
+            _tabBar(),
+            _tabBarView()
           ],
         ),
       ),
     );
+  }
+
+
+  Expanded _tabBarView() {
+    return Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                SignInScreen(),
+                SignUpScreen(),
+              ],
+            ),
+          );
+  }
+
+  Container _tabBar() {
+    return Container(
+            height: 250.h,
+            decoration: BoxDecoration(
+              color: Palette.whiteColor,
+              boxShadow: [
+                BoxShadow(
+                  color: const Color.fromARGB(255, 192, 192, 192),
+                  blurRadius: 30.h,
+                  spreadRadius: 10.0,
+                  offset: Offset(
+                    5.h,
+                    5.h,
+                  ),
+                ),
+              ],
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(45.h),
+                bottomRight: Radius.circular(45.h),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 150.w,
+                  height: 150.h,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        Assets.images.hatImg.path,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                TabBar(
+                  indicator: LineTabIndicator(
+                    color: Palette.backgroundOrange1,
+                    lineHeight: 1.5.h,
+                    strokeWidth: 3.h,
+                  ),
+                  labelColor: Palette.backgroundOrange1,
+                  unselectedLabelColor: const Color(0xffA8A8A8),
+                  controller: _tabController,
+                  labelStyle: TextStyle(
+                    fontSize: 20.h,
+                  ),
+                  tabs: myTabs.map((e) => e).toList(),
+                ),
+              ],
+            ),
+          );
   }
 }

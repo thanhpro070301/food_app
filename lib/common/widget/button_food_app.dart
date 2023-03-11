@@ -15,16 +15,25 @@ class ButtonFoodApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onTap,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          fixedSize: Size(314.w, 70.h),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.h))),
-      child: Text(
-        text,
-        style: TextStyle(color: textColor, fontSize: 23.h),
+    return SizedBox(
+      width: 314.w,
+      height: 70.h,
+      child: FloatingActionButton(
+        onPressed: onTap,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        backgroundColor: color,
+        elevation: 0,
+        highlightElevation: 0,
+        mini: false,
+        isExtended: true,
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        clipBehavior: Clip.none,
+        child: Text(
+          text,
+          style: TextStyle(color: textColor, fontSize: 23.h),
+        ),
       ),
     );
   }

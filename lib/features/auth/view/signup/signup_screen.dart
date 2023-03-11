@@ -63,52 +63,56 @@ class _SignupScreenState extends ConsumerState<SignUpScreen> {
     final isLoading = ref.watch(authControllerProvider);
     return isLoading
         ? const Loader()
-        : SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20.h,
-                ),
-                AuthField(
-                  keyboardType: TextInputType.emailAddress,
-                  label: "Email",
-                  controller: emailController,
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                AuthFieldPass(
-                  label: "Password",
-                  controller: passwordController,
-                ),
-                SizedBox(height: 10.h),
-                AuthField(
-                  keyboardType: TextInputType.name,
-                  label: "Full name",
-                  controller: fullnameController,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                AuthField(
-                  keyboardType: TextInputType.phone,
-                  label: "Phone",
-                  controller: phoneController,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                ButtonFoodApp(
-                  text: "Sign Up",
-                  textColor: Palette.whiteColor,
-                  color: Palette.backgroundOrange1,
-                  onTap: onSignUp,
-                ),
-                SizedBox(
-                  height: 30.h,
-                ),
-              ],
-            ),
-          );
+        : _bodySignUp();
+  }
+
+  SingleChildScrollView _bodySignUp() {
+    return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20.h,
+              ),
+              AuthField(
+                keyboardType: TextInputType.emailAddress,
+                label: "Email",
+                controller: emailController,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              AuthFieldPass(
+                label: "Password",
+                controller: passwordController,
+              ),
+              SizedBox(height: 10.h),
+              AuthField(
+                keyboardType: TextInputType.name,
+                label: "Full name",
+                controller: fullnameController,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              AuthField(
+                keyboardType: TextInputType.phone,
+                label: "Phone",
+                controller: phoneController,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              ButtonFoodApp(
+                text: "Sign Up",
+                textColor: Palette.whiteColor,
+                color: Palette.backgroundOrange1,
+                onTap: onSignUp,
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+            ],
+          ),
+        );
   }
 }
